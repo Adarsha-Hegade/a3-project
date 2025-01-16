@@ -1,19 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Sun, Moon, LogOut } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
-import { Button } from '../ui/Button';
 
 export const Navbar = () => {
-  const navigate = useNavigate();
-  const { logout, user } = useAuth();
   const { isDarkMode, toggleTheme } = useTheme();
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
 
   return (
     <nav className="bg-white dark:bg-gray-800 shadow-sm">
@@ -31,11 +21,6 @@ export const Navbar = () => {
             >
               {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            <span className="text-gray-700 dark:text-gray-300">{user?.username}</span>
-            <Button variant="secondary" onClick={handleLogout}>
-              <LogOut size={18} className="mr-2" />
-              Logout
-            </Button>
           </div>
         </div>
       </div>
